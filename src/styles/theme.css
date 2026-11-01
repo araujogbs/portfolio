@@ -1,0 +1,371 @@
+/*
+ * Tema: terra proibida. Névoa clara, pedra antiga, luz estourada e sigilos azuis.
+ * Carregado depois do CSS dos componentes (ver main.tsx), por isso sobrescreve sem
+ * precisar de seletores mais fortes. Os tokens de cor e fonte ficam em global.css.
+ */
+
+
+/* tábuas de pedra escura: trace, labs e menu, com sigilos acesos */
+:is(.trace, .lab, .cmdk) {
+  --bg: #24231f;
+  --bg-2: #2a2924;
+  --panel: #2f2e29;
+  --panel-2: #383731;
+  --line: rgb(236 233 223 / 0.1);
+  --line-strong: rgb(236 233 223 / 0.24);
+  --text: #ece9df;
+  --muted: #b8b4a8;
+  --faint: #a49f94;
+  --accent: var(--glow);
+  --accent-soft: rgb(143 227 255 / 0.12);
+  --accent-ink: #14201f;
+  --ok: #a9d9a0;
+  --warn: #e9cf86;
+  --err: #ef9a8f;
+  --info: var(--glow);
+  color: var(--text);
+}
+
+/* ---------- atmosfera: luz estourada e névoa ---------- */
+
+body::before {
+  background-image:
+    radial-gradient(80vw 60vh at 80% -15%, rgb(255 253 244 / 0.95), transparent 70%),
+    linear-gradient(180deg, transparent 55%, rgb(236 235 229 / 0.7) 100%);
+  background-size: auto;
+  mask-image: none;
+}
+
+body::after {
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--stone);
+  color: var(--glow);
+}
+
+/* ---------- inscrições ---------- */
+
+:is(.hero__title, .section-title, .case__name, .contact__title) {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  /* entalhado: luz de cima, sombra embaixo */
+  text-shadow:
+    0 1px 0 rgb(255 255 255 / 0.55),
+    0 -1px 0 rgb(0 0 0 / 0.12);
+}
+
+.hero__title {
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  line-height: 1;
+}
+
+.hero__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__role {
+  color: var(--faint);
+}
+
+/* o nome acende como um sigilo */
+.hero__word--accent {
+  color: var(--sigil);
+  text-shadow:
+    0 0 18px rgb(143 227 255 / 0.9),
+    0 0 42px rgb(143 227 255 / 0.55);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.section-title em,
+.contact__title em {
+  font-style: normal;
+  color: var(--sigil);
+  text-shadow: 0 0 22px rgb(143 227 255 / 0.75);
+}
+
+/* rótulos com um losango aceso no lugar do traço */
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.32em;
+  color: var(--stone);
+}
+
+.eyebrow::before {
+  width: 9px;
+  height: 9px;
+  background: var(--glow);
+  transform: rotate(45deg);
+  box-shadow:
+    0 0 0 2px var(--stone),
+    0 0 14px 2px rgb(143 227 255 / 0.8);
+}
+
+.hero__lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- botões ---------- */
+
+.btn {
+  border-radius: 2px;
+  border-color: var(--line-strong);
+  background: rgb(244 242 236 / 0.35);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  border-color: var(--stone);
+  background: #f4f2ec;
+}
+
+.btn--primary {
+  background: var(--stone);
+  border-color: var(--stone);
+  color: #f4f2ec;
+}
+
+.btn--primary:hover {
+  background: var(--stone);
+  color: var(--glow);
+  box-shadow: 0 0 0 1px var(--glow), 0 0 24px rgb(143 227 255 / 0.6);
+}
+
+:is(.hero__status, .chip) {
+  border-radius: 2px;
+  background: rgb(244 242 236 / 0.4);
+}
+
+.topbar.is-scrolled {
+  background: rgb(211 209 201 / 0.85);
+}
+
+/* ---------- topo: janela em arco para a terra distante ---------- */
+
+.hero__visual {
+  position: relative;
+}
+
+.hero__vista {
+  position: relative;
+  z-index: 0;
+  width: 86%;
+  aspect-ratio: 400 / 290;
+  margin: -40px auto -34px;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+  box-shadow:
+    0 0 0 8px #bfbdb4,
+    0 0 0 9px rgb(40 38 34 / 0.25),
+    0 30px 60px rgb(40 38 34 / 0.2);
+}
+
+.hero__visual .trace {
+  z-index: 1;
+  background: var(--bg);
+  box-shadow:
+    0 0 0 1px rgb(143 227 255 / 0.12),
+    0 28px 60px rgb(20 20 18 / 0.35);
+}
+
+/* ---------- faixa de números ---------- */
+
+.ticker {
+  background: var(--stone);
+  color: #ece9df;
+  --muted: #b8b4a8;
+  border: 0;
+}
+
+.ticker__item strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--glow);
+  text-shadow: 0 0 14px rgb(143 227 255 / 0.55);
+}
+
+/* ---------- princípios como tábuas entalhadas ---------- */
+
+.principle {
+  background: linear-gradient(180deg, #dcdad3, #cfcdc5);
+  border-color: rgb(40 38 34 / 0.18);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.6),
+    inset 0 -2px 0 rgb(0 0 0 / 0.08);
+}
+
+.principle h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+}
+
+.principle__code {
+  color: var(--sigil);
+}
+
+/* ---------- projetos: um colosso por vez, em numeral romano ---------- */
+
+.case__index {
+  position: relative;
+  font-size: 0;
+  -webkit-text-stroke: 0;
+}
+
+.case__index::after {
+  content: attr(data-roman);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 11vw, 9rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: #c9c7be;
+  text-shadow:
+    1px 1px 0 rgb(255 255 255 / 0.75),
+    -1px -1px 0 rgb(0 0 0 / 0.22);
+}
+
+.case__index::before {
+  content: 'colosso';
+  position: absolute;
+  top: -1.6rem;
+  left: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sigil);
+}
+
+.case__name {
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+}
+
+.case__problem {
+  border-left-color: var(--stone);
+  background: rgb(244 242 236 / 0.45);
+  border-radius: 0 3px 3px 0;
+}
+
+.case__problem .mono {
+  color: var(--sigil);
+}
+
+.case__metrics dt {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.case__highlights li {
+  background: rgb(244 242 236 / 0.35);
+}
+
+/* ---------- galeria: imagens lavadas pela névoa que ganham cor ---------- */
+
+.gallery__item button {
+  border-radius: 2px;
+  border: 1px solid rgb(40 38 34 / 0.25);
+  box-shadow: 0 10px 24px rgb(40 38 34 / 0.18);
+}
+
+.gallery__item img {
+  filter: grayscale(0.75) contrast(0.92) brightness(1.06);
+  transition:
+    filter 0.5s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+.gallery__item button:hover img {
+  filter: none;
+}
+
+.gallery__zoom {
+  border-radius: 2px;
+  background: var(--stone);
+  color: var(--glow);
+}
+
+/* ---------- trajetória e stack ---------- */
+
+.timeline__card {
+  background: rgb(244 242 236 / 0.3);
+}
+
+.timeline__item.is-current .timeline__card {
+  background: #e6e4dd;
+  border-color: rgb(43 108 134 / 0.4);
+  box-shadow: 0 0 0 1px rgb(143 227 255 / 0.4), 0 0 30px rgb(143 227 255 / 0.25);
+}
+
+.layer h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.layer:hover h3 {
+  color: var(--sigil);
+  text-shadow: 0 0 16px rgb(143 227 255 / 0.8);
+}
+
+/* ---------- contato ---------- */
+
+.contact__card {
+  border-radius: 999px 999px 4px 4px / 220px 220px 4px 4px;
+  border: 1px solid rgb(40 38 34 / 0.2);
+  background:
+    radial-gradient(70% 60% at 50% 0%, rgb(255 253 244 / 0.9), transparent 70%),
+    #d9d7cf;
+  box-shadow: 0 30px 70px rgb(40 38 34 / 0.18);
+}
+
+.contact__avatar {
+  width: 128px;
+  height: 128px;
+  border: 3px solid var(--stone);
+  box-shadow:
+    0 0 0 6px #e6e4dd,
+    0 0 36px 6px rgb(143 227 255 / 0.7);
+  filter: grayscale(0.35);
+}
+
+.contact__title {
+  font-size: clamp(2.1rem, 5.6vw, 4.2rem);
+}
+
+.footer span:nth-child(3) {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* ---------- telas menores ---------- */
+
+@media (max-width: 980px) {
+  .hero__vista {
+    width: 100%;
+    margin: 0 auto -60px;
+  }
+}

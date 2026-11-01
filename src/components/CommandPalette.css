@@ -1,0 +1,146 @@
+.cmdk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgb(5 5 6 / 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: fade 0.18s ease;
+}
+
+.cmdk {
+  position: fixed;
+  z-index: 91;
+  top: min(16vh, 140px);
+  left: 50%;
+  width: min(620px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 80px rgb(0 0 0 / 0.6),
+    0 0 0 1px rgb(255 145 164 / 0.06);
+  overflow: hidden;
+  animation: pop 0.22s var(--ease);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.98);
+  }
+}
+
+.cmdk__search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cmdk__prompt {
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.cmdk__search input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  outline: 0;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.cmdk__search input::placeholder {
+  color: var(--faint);
+}
+
+.cmdk__list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+}
+
+.cmdk__group {
+  padding: 12px 12px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cmdk__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cmdk__item.is-active {
+  background: var(--accent-soft);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.cmdk__hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmdk__empty {
+  padding: 24px 12px;
+  color: var(--muted);
+}
+
+.cmdk__foot {
+  display: flex;
+  gap: 18px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+}
+
+.cmdk__tip {
+  margin-left: auto;
+}
+
+.cmdk-toast {
+  position: fixed;
+  z-index: 95;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  animation: fade 0.2s ease;
+}
+
+@media (max-width: 560px) {
+  .cmdk__foot {
+    display: none;
+  }
+}

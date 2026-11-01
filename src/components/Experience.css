@@ -1,0 +1,129 @@
+.experience {
+  border-top: 1px solid var(--line);
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 180px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--line) 30%, var(--line));
+}
+
+.timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: 176px;
+  top: 26px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--faint);
+}
+
+.timeline__item.is-current::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.timeline__period {
+  padding-top: 20px;
+  padding-right: 24px;
+  text-align: right;
+  color: var(--muted);
+}
+
+.timeline__item.is-current .timeline__period {
+  color: var(--accent);
+}
+
+.timeline__card {
+  padding: 18px 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgb(255 255 255 / 0.015);
+}
+
+.timeline__item.is-current .timeline__card {
+  border-color: rgb(255 145 164 / 0.3);
+}
+
+.timeline__card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.timeline__card h3 span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.timeline__mode {
+  display: block;
+  margin-top: 4px;
+  color: var(--faint);
+}
+
+.timeline__card ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.timeline__card li + li {
+  margin-top: 6px;
+}
+
+.timeline__card li::marker {
+  color: var(--accent);
+}
+
+.timeline__item--edu .timeline__card {
+  border-style: dashed;
+}
+
+@media (max-width: 720px) {
+  .timeline::before {
+    left: 4px;
+  }
+
+  .timeline__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding-left: 26px;
+  }
+
+  .timeline__item::before {
+    left: 0;
+    top: 4px;
+  }
+
+  .timeline__period {
+    padding: 0;
+    text-align: left;
+  }
+}

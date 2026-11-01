@@ -1,0 +1,316 @@
+@property --t {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.trace {
+  margin: 0;
+  position: relative;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.035), rgb(255 255 255 / 0.01));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 40px 120px -40px rgb(255 145 164 / 0.25),
+    inset 0 1px 0 rgb(255 255 255 / 0.06);
+  overflow: hidden;
+}
+
+.trace__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.trace__title {
+  color: var(--muted);
+}
+
+.trace__title::before {
+  content: '● ';
+  color: var(--ok);
+}
+
+.trace__tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.trace__tabs button {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--faint);
+  cursor: pointer;
+}
+
+.trace__tabs button:hover {
+  color: var(--text);
+}
+
+.trace__tabs button.is-active {
+  color: var(--accent);
+  border-color: rgb(255 145 164 / 0.35);
+  background: var(--accent-soft);
+}
+
+.trace__body {
+  padding: 18px 16px 16px;
+  animation: trace-play var(--play) linear forwards;
+}
+
+@keyframes trace-play {
+  from {
+    --t: 0;
+  }
+  to {
+    --t: 1;
+  }
+}
+
+.trace__req {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+}
+
+.trace__method {
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  background: rgb(143 184 255 / 0.12);
+  color: var(--info);
+}
+
+.trace__method--post {
+  background: rgb(126 226 168 / 0.12);
+  color: var(--ok);
+}
+
+.trace__method--cmd {
+  background: rgb(255 197 107 / 0.12);
+  color: var(--warn);
+}
+
+.trace__route {
+  color: var(--text);
+}
+
+.trace__project {
+  margin-left: auto;
+  color: var(--faint);
+  font-size: 0.7rem;
+}
+
+.trace__grid {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+/* 78px da coluna de rótulo + 12px de gap; 52px + 12px da coluna de ms */
+.trace__playhead {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: calc(90px + (100% - 90px - 64px) * var(--t));
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: calc(1 - var(--t) * var(--t));
+  pointer-events: none;
+}
+
+.trace__row {
+  display: grid;
+  grid-template-columns: 78px 1fr 52px;
+  align-items: center;
+  gap: 12px;
+  min-height: 38px;
+}
+
+.trace__layer {
+  color: var(--muted);
+  text-align: right;
+}
+
+.trace__track {
+  position: relative;
+  height: 38px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.025);
+  overflow: hidden;
+}
+
+.trace__span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--s);
+  width: clamp(0%, calc(var(--t) * 100% - var(--s)), var(--w));
+  border-radius: 8px;
+  background: var(--accent);
+  opacity: 0.22;
+}
+
+.trace__span--interface {
+  background: var(--accent);
+}
+.trace__span--infra {
+  background: var(--info);
+}
+.trace__span--api {
+  background: var(--ok);
+}
+.trace__span--dados {
+  background: var(--warn);
+}
+
+.trace__span::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 3px;
+  background: inherit;
+  filter: brightness(1.3);
+  opacity: 1;
+}
+
+.trace__label {
+  position: absolute;
+  left: max(10px, calc(var(--s) + 10px));
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.72rem;
+  color: var(--text);
+  opacity: 0;
+  animation: trace-in 0.4s var(--ease) forwards;
+  animation-delay: var(--delay);
+}
+
+.trace__label--idle {
+  left: 10px;
+  color: var(--faint);
+  animation: none;
+  opacity: 1;
+}
+
+.trace__row.is-idle .trace__layer {
+  color: var(--faint);
+}
+
+.trace__ms {
+  color: var(--faint);
+  font-size: 0.7rem;
+  opacity: 0;
+  animation: ms-in 0.4s var(--ease) forwards;
+  animation-delay: calc(var(--delay) + 300ms);
+}
+
+@keyframes trace-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-50% + 4px));
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ms-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.trace__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  opacity: 0;
+  animation: status-in 0.5s var(--ease) forwards;
+  animation-delay: var(--play);
+}
+
+@keyframes status-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.trace__status--ok {
+  color: var(--ok);
+  background: rgb(126 226 168 / 0.06);
+}
+
+.trace__status--info {
+  color: var(--warn);
+  background: rgb(255 197 107 / 0.06);
+}
+
+.trace__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.trace__total {
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.trace__caption {
+  padding: 0 16px 14px;
+  color: var(--faint);
+  font-size: 0.66rem;
+}
+
+@media (max-width: 480px) {
+  .trace__row {
+    grid-template-columns: 62px 1fr;
+  }
+
+  .trace__ms {
+    display: none;
+  }
+
+  .trace__playhead {
+    left: calc(74px + (100% - 74px) * var(--t));
+  }
+
+  .trace__project {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace__body {
+    --t: 1;
+    animation: none;
+  }
+}
