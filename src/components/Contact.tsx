@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { profile } from '../data/profile';
 import { useNow } from '../hooks/useNow';
+import { asset } from '../lib/asset';
 import { copyText } from '../lib/clipboard';
 import './Contact.css';
 
@@ -25,7 +26,7 @@ export function Contact() {
     <section className="section contact" id="contato" aria-labelledby="contact-title">
       <div className="wrap">
         <div className="contact__card" data-reveal>
-          <img className="contact__avatar" src="/img/avatar.jpg" alt="Foto de Gabriel Araújo" width={88} height={88} />
+          <img className="contact__avatar" src={asset('img/avatar.jpg')} alt="Foto de Gabriel Araújo" width={88} height={88} />
           <span className="eyebrow">Contato</span>
           <h2 className="contact__title" id="contact-title">
             Tem um projeto em mente? <em>Me chama.</em>

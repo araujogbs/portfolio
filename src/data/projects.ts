@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import type { Layer } from './profile';
 
 export type ProjectId = 'lari' | 'bot' | 'lessionato' | 'mhba';
@@ -69,10 +70,10 @@ export const projects: Project[] = [
       { label: 'Código da API', href: 'https://github.com/araujogbs/lari-novais-beauty-agendamento' },
     ],
     shots: [
-      { src: '/img/lari-home.jpg', alt: 'Página inicial do site da Lari Novais Beauty', ratio: '1440 / 860' },
-      { src: '/img/lari-agendamento.png', alt: 'Agendamento online com calendário de dias livres e resumo', ratio: '760 / 2535' },
-      { src: '/img/lari-painel.png', alt: 'Painel da maquiadora com pedidos em análise (dados fictícios)', ratio: '1280 / 1943' },
-      { src: '/img/lari-celular.jpg', alt: 'Site no celular', ratio: '780 / 1688' },
+      { src: asset('img/lari-home.jpg'), alt: 'Página inicial do site da Lari Novais Beauty', ratio: '1440 / 860' },
+      { src: asset('img/lari-agendamento.png'), alt: 'Agendamento online com calendário de dias livres e resumo', ratio: '760 / 2535' },
+      { src: asset('img/lari-painel.png'), alt: 'Painel da maquiadora com pedidos em análise (dados fictícios)', ratio: '1280 / 1943' },
+      { src: asset('img/lari-celular.jpg'), alt: 'Site no celular', ratio: '780 / 1688' },
     ],
   },
   {
@@ -116,11 +117,11 @@ export const projects: Project[] = [
       { label: 'Código no GitHub', href: 'https://github.com/araujogbs/make-house-black-again' },
     ],
     shots: [
-      { src: '/img/mhba-hero.jpg', alt: 'Abertura do site com a contagem regressiva até o evento', ratio: '1546 / 784' },
-      { src: '/img/mhba-manifesto.jpg', alt: 'Manifesto que acende com a rolagem', ratio: '1546 / 784' },
-      { src: '/img/mhba-cartazes.jpg', alt: 'Mural de lambe-lambe interativo com seis cartazes', ratio: '1546 / 784' },
-      { src: '/img/mhba-pista.jpg', alt: 'Galeria da pista com fotos que ganham cor', ratio: '1546 / 784' },
-      { src: '/img/mhba-contest.jpg', alt: 'Inscrição do Warmup Contest', ratio: '1546 / 784' },
+      { src: asset('img/mhba-hero.jpg'), alt: 'Abertura do site com a contagem regressiva até o evento', ratio: '1546 / 784' },
+      { src: asset('img/mhba-manifesto.jpg'), alt: 'Manifesto que acende com a rolagem', ratio: '1546 / 784' },
+      { src: asset('img/mhba-cartazes.jpg'), alt: 'Mural de lambe-lambe interativo com seis cartazes', ratio: '1546 / 784' },
+      { src: asset('img/mhba-pista.jpg'), alt: 'Galeria da pista com fotos que ganham cor', ratio: '1546 / 784' },
+      { src: asset('img/mhba-contest.jpg'), alt: 'Inscrição do Warmup Contest', ratio: '1546 / 784' },
     ],
   },
   {
@@ -200,10 +201,10 @@ export const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'PIX (EFI)', 'pdf-lib', 'Nginx', 'PM2'],
     links: [{ label: 'Documentação no GitHub', href: 'https://github.com/araujogbs/lessionato-edtech-platform' }],
     shots: [
-      { src: '/img/lessionato-home.jpg', alt: 'Página inicial da Lessionato', ratio: '1280 / 800' },
-      { src: '/img/lessionato-pagamento-pix.jpg', alt: 'Tela de pagamento PIX com QR Code de exemplo', ratio: '1280 / 764' },
-      { src: '/img/lessionato-certificado-frente.jpg', alt: 'Certificado em PDF gerado no servidor', ratio: '1280 / 906' },
-      { src: '/img/lessionato-validacao-certificado.jpg', alt: 'Validação pública do certificado', ratio: '1280 / 382' },
+      { src: asset('img/lessionato-home.jpg'), alt: 'Página inicial da Lessionato', ratio: '1280 / 800' },
+      { src: asset('img/lessionato-pagamento-pix.jpg'), alt: 'Tela de pagamento PIX com QR Code de exemplo', ratio: '1280 / 764' },
+      { src: asset('img/lessionato-certificado-frente.jpg'), alt: 'Certificado em PDF gerado no servidor', ratio: '1280 / 906' },
+      { src: asset('img/lessionato-validacao-certificado.jpg'), alt: 'Validação pública do certificado', ratio: '1280 / 382' },
     ],
   },
 ];

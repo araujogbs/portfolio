@@ -1,5 +1,7 @@
 # Portfólio · Gabriel Araújo
 
+**No ar:** [araujogbs.github.io/portfolio](https://araujogbs.github.io/portfolio/)
+
 Meu portfólio pessoal, feito em **React 19 + TypeScript (strict) + Vite**, sem biblioteca de UI nem de animação.
 
 ![Topo do portfólio](public/img/og.jpg)
@@ -49,7 +51,7 @@ src/
 Para trocar textos, projetos ou prints, basta editar `src/data/` e `public/img/`.
 O currículo fica em `public/cv/Gabriel-Araujo-CV.pdf`.
 
-## Publicando
+## Publicação
 
-`dist/` é estático e pode ir para Cloudflare Pages, Netlify ou Vercel.
-Depois de ter o domínio, troque o `og:image` do `index.html` pela URL absoluta da imagem.
+Cada push na `main` faz o build e publica no GitHub Pages (`.github/workflows/deploy.yml`).
+O site roda em `/portfolio/`, por isso os arquivos de `public/` passam pelo helper `asset()` (`src/lib/asset.ts`).

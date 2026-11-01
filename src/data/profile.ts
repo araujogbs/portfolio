@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset';
+
 export const profile = {
   name: 'Gabriel Araújo',
   role: 'Desenvolvedor Full Stack',
@@ -6,7 +8,7 @@ export const profile = {
   email: 'Gabriel.AraujoC@outlook.com',
   github: 'https://github.com/araujogbs',
   linkedin: 'https://www.linkedin.com/in/gabriel-araujoc/',
-  cv: '/cv/Gabriel-Araujo-CV.pdf',
+  cv: asset('cv/Gabriel-Araujo-CV.pdf'),
 } as const;
 
 export type Layer = 'interface' | 'api' | 'dados' | 'infra';
