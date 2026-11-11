@@ -113,7 +113,7 @@ export const projects: Project[] = [
     layers: ['interface', 'infra'],
     stack: ['TypeScript', 'Vite', 'HTML', 'CSS', 'Netlify'],
     links: [
-      { label: 'Ver o site', href: 'https://makehouseblackagain.netlify.app' },
+      { label: 'Ver o site', href: 'https://makehouseblackagain.com.br' },
       { label: 'Código no GitHub', href: 'https://github.com/araujogbs/make-house-black-again' },
     ],
     shots: [

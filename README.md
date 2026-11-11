@@ -11,7 +11,7 @@ Em vez de só listar projetos, cada um tem um **laboratório interativo** com a 
 | Projeto | O que dá para testar |
 |---|---|
 | [Lari Novais Beauty](https://larinovaisbeauty.com.br) | Marcar horários e ver a API responder 201, 409 (exclusion constraint do PostgreSQL) ou 400; calcular a taxa de deslocamento |
-| [MHBA](https://makehouseblackagain.netlify.app) | Contagem regressiva ao vivo, notas do Lighthouse e redução de peso da mídia |
+| [MHBA](https://makehouseblackagain.com.br) | Contagem regressiva ao vivo, notas do Lighthouse e redução de peso da mídia |
 | [Bot de suporte ERP](https://github.com/araujogbs/bot-suporte-ERP) | Chat no estilo Discord com os comandos `!buscar` e `!relatoriov8` (dados fictícios) |
 | [Lessionato](https://github.com/araujogbs/lessionato-edtech-platform) | Diagrama de sequência do pagamento PIX (mTLS + webhook), passo a passo |
 

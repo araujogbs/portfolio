@@ -74,7 +74,7 @@ export function CommandPalette({ open, onClose }: Props) {
       { id: 'linkedin', group: 'Links', label: 'LinkedIn', hint: '↗', run: open(profile.linkedin) },
       { id: 'github', group: 'Links', label: 'GitHub', hint: '↗', run: open(profile.github) },
       { id: 'lari-live', group: 'Links', label: 'larinovaisbeauty.com.br', hint: 'em produção ↗', run: open('https://larinovaisbeauty.com.br') },
-      { id: 'mhba-live', group: 'Links', label: 'makehouseblackagain.netlify.app', hint: 'no ar ↗', run: open('https://makehouseblackagain.netlify.app') },
+      { id: 'mhba-live', group: 'Links', label: 'makehouseblackagain.com.br', hint: 'no ar ↗', run: open('https://makehouseblackagain.com.br') },
     ];
   }, []);
 
